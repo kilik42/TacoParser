@@ -2,6 +2,7 @@
 using System.Linq;
 using System.IO;
 using GeoCoordinatePortable;
+using System.Data.Common;
 
 namespace LoggingKata
 {
@@ -43,7 +44,10 @@ namespace LoggingKata
 
             //HINT NESTED LOOPS SECTION---------------------
             // Do a loop for your locations to grab each location as the origin (perhaps: `locA`)
-
+            foreach(var location in locations)
+            {
+                Console.WriteLine($"each location: {location}");
+            }
             // Create a new corA Coordinate with your locA's lat and long
 
             // Now, do another loop on the locations with the scope of your first loop, so you can grab the "destination" location (perhaps: `locB`)
