@@ -6,7 +6,7 @@
     public class TacoParser
     {
         readonly ILog logger = new TacoLogger();
-        private object tacoBell;
+      
 
         public ITrackable Parse(string line)
         {

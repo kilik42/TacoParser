@@ -37,19 +37,44 @@ namespace LoggingKata
             // TODO: Create two `ITrackable` variables with initial values of `null`. These will be used to store your two taco bells that are the farthest from each other.
             // Create a `double` variable to store the distance
             ITrackable trackableone = null;
-            ITrackable tackabletwo = null;
+            ITrackable trackabletwo = null;
             double distance = 0.00;
 
             // Include the Geolocation toolbox, so you can compare locations: `using GeoCoordinatePortable;`
-
+            
             //HINT NESTED LOOPS SECTION---------------------
             // Do a loop for your locations to grab each location as the origin (perhaps: `locA`)
-            foreach(var location in locations)
+            for(var i = 0; i < locations.Length; i++)
             {
-                Console.WriteLine($"each location: {location}");
-            }
-            // Create a new corA Coordinate with your locA's lat and long
+                //Console.WriteLine($"each location: {location}");
+                var locA = locations[i];
+                var corA = new GeoCoordinate();
+                corA.Latitude = locA.Location.Latitude;
+                corA.Longitude = locA.Location.Longitude;
+                      for(var j = 0; j < locations.Length; i++)
+                {
+                    var locB = locations[j];
+                    var corB = new GeoCoordinate();
+                    corB.Latitude = locB.Location.Latitude;
+                    corB.Longitude = locB.Location.Longitude;
+                    if(corA.GetDistanceTo(corB) > distance)
+                    {
+                        distance = corA.GetDistanceTo(corB);
+                        trackableone = locA;
+                        trackabletwo = locB;
+                    }
 
+                }
+
+                     
+
+            }
+
+            logger.LogInfo($"{trackableone.Name} and {trackabletwo.Name} ");
+
+            // Create a new corA Coordinate with your locA's lat and long
+           
+            
             // Now, do another loop on the locations with the scope of your first loop, so you can grab the "destination" location (perhaps: `locB`)
 
             // Create a new Coordinate with your locB's lat and long
